@@ -48,16 +48,17 @@ export default function PromptModal({ prompt, onClose }: PromptModalProps) {
     return () => window.removeEventListener('keydown', handleEsc);
   }, [prompt, onClose]);
 
-  if (!prompt) return null;
-
-  const avgQuality = Math.round(
-    (prompt.quality.specificity_score +
-      prompt.quality.originality_score +
-      prompt.quality.implementation_clarity_score +
-      prompt.quality.website_readiness_score) / 4
-  );
+  const avgQuality = prompt
+    ? Math.round(
+        (prompt.quality.specificity_score +
+          prompt.quality.originality_score +
+          prompt.quality.implementation_clarity_score +
+          prompt.quality.website_readiness_score) / 4
+      )
+    : 0;
 
   const handleCopy = () => {
+    if (!prompt) return;
     navigator.clipboard.writeText(prompt.prompt);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -67,11 +68,15 @@ export default function PromptModal({ prompt, onClose }: PromptModalProps) {
     <AnimatePresence>
       {prompt && (
         <motion.div
+          key="prompt-modal"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-[100] flex items-center justify-center p-4"
           onClick={onClose}
+          role="dialog"
+          aria-modal="true"
+          aria-label={prompt.title}
         >
           {/* Backdrop */}
           <div className="absolute inset-0 bg-future-black/80 backdrop-blur-xl" />
@@ -83,7 +88,8 @@ export default function PromptModal({ prompt, onClose }: PromptModalProps) {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             onClick={e => e.stopPropagation()}
-            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto glass-card rounded-3xl border border-future-border shadow-2xl"
+            data-lenis-prevent
+            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto overscroll-contain glass-card rounded-3xl border border-future-border shadow-2xl"
           >
             {/* Header */}
             <div className="sticky top-0 z-10 flex items-center justify-between p-6 border-b border-future-border bg-future-surface/90 backdrop-blur-xl">
