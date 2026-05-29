@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Sparkles, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 interface FooterProps {
   onLegalClick: () => void;
@@ -14,9 +14,11 @@ export default function Footer({ onLegalClick }: FooterProps) {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-future-cyan to-future-indigo flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-future-black" aria-hidden="true" />
-            </div>
+            <img
+              src="/Logo/logo-gradient.png"
+              alt="Promptarium"
+              className="w-9 h-9 rounded-lg object-cover"
+            />
             <span className="font-display text-xl font-semibold tracking-wide text-future-white">
               Prompt<span className="text-future-cyan">arium</span>
             </span>

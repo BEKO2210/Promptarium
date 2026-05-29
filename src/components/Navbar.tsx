@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, Menu, X, Sparkles } from 'lucide-react';
+import { Search, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   onSearchClick: () => void;
@@ -35,10 +35,12 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-future-cyan to-future-indigo flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-future-black" />
-            </div>
+          <a href="#" className="flex items-center gap-3 group">
+            <img
+              src="/Logo/logo-gradient.png"
+              alt="Promptarium"
+              className="w-9 h-9 rounded-lg object-cover"
+            />
             <span className="font-display text-xl font-semibold tracking-wide text-future-white">
               Prompt<span className="text-future-cyan">arium</span>
             </span>
