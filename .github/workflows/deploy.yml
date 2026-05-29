@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -33,12 +33,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Copy data files to dist
-        run: |
-          cp public/prompts.json dist/prompts.json || true
-          mkdir -p dist/images
-          cp -r public/images/* dist/images/ || true
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -47,13 +41,6 @@ jobs:
         with:
           path: './dist'
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
