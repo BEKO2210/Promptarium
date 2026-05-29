@@ -45,7 +45,7 @@ export function usePrompts() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/prompts.json')
+    fetch('prompts.json')
       .then(r => r.json())
       .then((data: Prompt[]) => {
         setPrompts(data);

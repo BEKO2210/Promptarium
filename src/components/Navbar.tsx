@@ -37,7 +37,7 @@ export default function Navbar({ onSearchClick }: NavbarProps) {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#" className="flex items-center gap-3 group">
             <img
-              src="/Logo/logo-gradient.png"
+              src="Logo/logo-gradient.png"
               alt="Promptarium"
               className="w-9 h-9 rounded-lg object-cover"
             />

@@ -15,7 +15,7 @@ export default function Footer({ onLegalClick }: FooterProps) {
           {/* Brand */}
           <div className="flex items-center gap-3">
             <img
-              src="/Logo/logo-gradient.png"
+              src="Logo/logo-gradient.png"
               alt="Promptarium"
               className="w-9 h-9 rounded-lg object-cover"
             />

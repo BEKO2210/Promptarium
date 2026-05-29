@@ -78,7 +78,7 @@ export default function CategoryShowcase({ categories, onSelect }: CategoryShowc
                 {/* Category image */}
                 <div className="relative h-40 overflow-hidden">
                   <img
-                    src={`/images/${cat.name}.jpg`}
+                    src={`images/${cat.name}.jpg`}
                     alt={cat.label}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     loading="lazy"
